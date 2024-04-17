@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>US Phone Number Validator</title>
+<style>
+/* Add your CSS styles here */
+</style>
+</head>
+<body>
+<input type="text" id="user-input" placeholder="Enter phone number">
+<button id="check-btn">Check</button>
+<button id="clear-btn">Clear</button>
+<div id="results-div"></div>
+
+<script>
+// JavaScript code
+document.getElementById("check-btn").addEventListener("click", function() {
+    var userInput = document.getElementById("user-input").value.trim();
+    var resultsDiv = document.getElementById("results-div");
+    
+    // Clear previous results
+    resultsDiv.innerHTML = "";
+    
+    if (userInput === "") {
+        alert("Please provide a phone number");
+        return;
+    }
+    
+    // Regular expression for validating US phone numbers
+    var regex = /^(1\s?)?(\([0-9]{3}\)|[0-9]{3})[\s-]?[0-9]{3}[\s-]?[0-9]{4}$/;
+    
+    if (regex.test(userInput)) {
+        resultsDiv.textContent = "Valid US number: " + userInput;
+    } else {
+        resultsDiv.textContent = "Invalid US number: " + userInput;
+    }
+});
+
+document.getElementById("clear-btn").addEventListener("click", function() {
+    document.getElementById("results-div").innerHTML = "";
+});
+</script>
+</body>
+</html>
